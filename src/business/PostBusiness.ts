@@ -166,7 +166,7 @@ export class PostBusiness {
     return output;
   };
 
-  public likeOrDislikePostById = async (
+  public likeOrDislikePost = async (
     input: LikeOrDislikePostInputDTO
   ): Promise<LikeOrDislikePostOutputDTO> => {
     const { token, like, postId } = input;
