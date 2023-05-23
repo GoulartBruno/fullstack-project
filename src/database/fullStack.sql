@@ -68,3 +68,31 @@ WHERE id = 'p001';
 UPDATE posts
 SET likes = 1, dislikes = 1
 WHERE id = 'p002';
+
+CREATE TABLE
+    likes_dislikes_comment (
+        user_id TEXT NOT NULL,
+        comment_id TEXT NOT NULL,
+        like INTEGER NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (comment_id) REFERENCES comments (id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+
+    CREATE TABLE comments (
+        id TEXT PRIMARY KEY UNIQUE NOT NULL,
+        creator_id TEXT NOT NULL,
+        comment_content TEXT NOT NULL,
+        likes INTEGER DEFAULT(0) NOT NULL,
+        dislikes INTEGER DEFAULT(0) NOT NULL,
+        created_at TEXT DEFAULT (DATETIME()) NOT NULL,
+        FOREIGN KEY (creator_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+
+    CREATE TABLE
+    post_comments (
+        post_id TEXT NOT NULL,
+        comment_id TEXT NOT NULL,
+        FOREIGN KEY (post_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (comment_id) REFERENCES comments (id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+
