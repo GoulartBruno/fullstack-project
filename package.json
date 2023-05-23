@@ -1,5 +1,5 @@
 {
-  "name": "rev-arq",
+  "name": "revisaobackendemichelle",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,7 +28,7 @@
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/knex": "^0.16.1",
-    "@types/node": "^18.16.3",
+    "@types/node": "^20.1.7",
     "@types/uuid": "^9.0.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"

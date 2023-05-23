@@ -199,7 +199,7 @@ export class PostBusiness {
 
     const likeDislikeDB: LikeDislikeDB = {
       user_id: payload.id,
-      post_id: postId,
+      posts_id: postId,
       like: likeSQlite,
     };
 

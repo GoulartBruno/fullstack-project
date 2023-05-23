@@ -1,4 +1,4 @@
--- Active: 1684772055833@@127.0.0.1@3306
+-- Active: 1684857143492@@127.0.0.1@3306
 CREATE TABLE users (
     id TEXT PRIMARY KEY UNIQUE NOT NULL,
     name TEXT NOT NULL,
@@ -7,6 +7,8 @@ CREATE TABLE users (
     role TEXT NOT NULL,
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
+DROP TABLE likes_dislikes;
+
 
 INSERT INTO users (id, name, email, password, role)
 VALUES
@@ -18,6 +20,8 @@ VALUES
 
   -- tipo ADMIN e senha = astrodev99
 	('u003', 'Astrodev', 'astrodev@email.com', '$2a$12$lHyD.hKs3JDGu2nIbBrxYujrnfIX5RW5oq/B41HCKf7TSaq9RgqJ.', 'ADMIN');
+SELECT * FROM users;
+
 
 CREATE TABLE posts (
     id TEXT PRIMARY KEY UNIQUE NOT NULL,
