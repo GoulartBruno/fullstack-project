@@ -2,7 +2,7 @@ import {
   LikeDislikeDB,
   POST_LIKE,
   PostDB,
-  PlaylistDBWithCreatorName,
+  PostDBWithCreatorName,
 } from "../models/Post";
 import { BaseDatabase } from "./BaseDatabase";
 import { UserDatabase } from "./UserDatabase";
@@ -39,7 +39,7 @@ export class PostDatabase extends BaseDatabase {
     return result as PostDBWithCreatorName[];
   };
 
-  public findPosttById = async (id: string): Promise<PostDB | undefined> => {
+  public findPostById = async (id: string): Promise<PostDB | undefined> => {
     const [result] = await BaseDatabase.connection(PostDatabase.TABLE_POSTS)
       .select()
       .where({ id });
@@ -59,9 +59,9 @@ export class PostDatabase extends BaseDatabase {
       .where({ id });
   };
 
-  public findPlaylistWithCreatorNameById = async (
+  public findPostWithCreatorNameById = async (
     id: string
-  ): Promise<PlaylistDBWithCreatorName | undefined> => {
+  ): Promise<PostDBWithCreatorName | undefined> => {
     const [result] = await BaseDatabase.connection(PostDatabase.TABLE_POSTS)
       .select(
         `${PostDatabase.TABLE_POSTS}.id`,
@@ -81,7 +81,7 @@ export class PostDatabase extends BaseDatabase {
       )
       .where({ [`${PostDatabase.TABLE_POSTS}.id`]: id });
 
-    return result as postDBWithCreatorName | undefined;
+    return result as PostDBWithCreatorName | undefined;
   };
 
   public findLikeDislike = async (
