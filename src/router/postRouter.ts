@@ -12,7 +12,7 @@ const postController = new PostController(
 );
 
 postRouter.post("/", postController.createPost);
-postRouter.get("/", postController.getPosts);
+postRouter.get("/", postController.getPost);
 postRouter.put("/:id", postController.editPost);
 postRouter.delete("/:id", postController.deletePost);
 
