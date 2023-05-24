@@ -3,7 +3,7 @@ import { PostBusiness } from "../business/PostBusiness";
 import { ZodError } from "zod";
 import { BaseError } from "../errors/BaseError";
 import { CreatePostSchema } from "../dtos/post/createPost.dto";
-import { GetPostsSchema } from "../dtos/post/getPosts.dto";
+import { GetPostSchema } from "../dtos/post/getPost.dto";
 import { EditPostSchema } from "../dtos/post/editPost.dto";
 import { DeletePostSchema } from "../dtos/post/deletePost.dto";
 import { LikeOrDislikePostSchema } from "../dtos/post/likeOrDislikePost.dto";
@@ -34,9 +34,9 @@ export class PostController {
     }
   };
 
-  public getPosts = async (req: Request, res: Response) => {
+  public getPost = async (req: Request, res: Response) => {
     try {
-      const input = GetPostsSchema.parse({
+      const input = GetPostSchema.parse({
         token: req.headers.authorization,
       });
 

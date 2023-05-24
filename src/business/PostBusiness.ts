@@ -8,7 +8,7 @@ import {
   DeletePostOutputDTO,
 } from "../dtos/post/deletePost.dto";
 import { EditPostInputDTO, EditPostOutputDTO } from "../dtos/post/editPost.dto";
-import { GetPostsInputDTO, GetPostsOutputDTO } from "../dtos/post/getPosts.dto";
+import { GetPostInputDTO, GetPostOutputDTO } from "../dtos/post/getPost.dto";
 import {
   LikeOrDislikePostInputDTO,
   LikeOrDislikePostOutputDTO,
@@ -53,8 +53,8 @@ export class PostBusiness {
       payload.name
     );
 
-    const postDB = post.toDBModel();
-    await this.postDatabase.insertPost(postDB);
+    const posttDB = post.toDBModel();
+    await this.postDatabase.insertPost(posttDB);
 
     const output: CreatePostOutputDTO = undefined;
 
@@ -62,8 +62,8 @@ export class PostBusiness {
   };
 
   public getPosts = async (
-    input: GetPostsInputDTO
-  ): Promise<GetPostsOutputDTO> => {
+    input: GetPostInputDTO
+  ): Promise<GetPostOutputDTO> => {
     const { token } = input;
 
     const payload = this.tokenManager.getPayload(token);
@@ -73,7 +73,7 @@ export class PostBusiness {
     }
 
     const postsDBwithCreatorName =
-      await this.postDatabase.getPostsWithCreatorName();
+      await this.postDatabase.getPostWithCreatorName();
 
     const posts = postsDBwithCreatorName.map((postWithCreatorName) => {
       const post = new Post(
@@ -81,7 +81,7 @@ export class PostBusiness {
         postWithCreatorName.body,
         postWithCreatorName.likes,
         postWithCreatorName.dislikes,
-        postWithCreatorName.comment,
+        postWithCreatorName.comments,
         postWithCreatorName.created_at,
         postWithCreatorName.updated_at,
         postWithCreatorName.creator_id,
@@ -91,7 +91,7 @@ export class PostBusiness {
       return post.toBusinessModel();
     });
 
-    const output: GetPostsOutputDTO = posts;
+    const output: GetPostOutputDTO = posts;
 
     return output;
   };
@@ -114,7 +114,7 @@ export class PostBusiness {
     }
 
     if (payload.id !== postDB.creator_id) {
-      throw new ForbiddenError("somente quem criou a post pode editá-la");
+      throw new ForbiddenError("somente quem criou o post pode editá-lo");
     }
 
     const post = new Post(
@@ -122,7 +122,7 @@ export class PostBusiness {
       postDB.body,
       postDB.likes,
       postDB.dislikes,
-      postDB.comment,
+      postDB.comments,
       postDB.created_at,
       postDB.updated_at,
       postDB.creator_id,
@@ -158,7 +158,7 @@ export class PostBusiness {
 
     if (payload.role !== USER_ROLES.ADMIN) {
       if (payload.id !== postDB.creator_id) {
-        throw new ForbiddenError("somente quem criou a post pode editá-la");
+        throw new ForbiddenError("somente quem criou o post pode editá-lo");
       }
     }
 
@@ -192,7 +192,7 @@ export class PostBusiness {
       postDBWithCreatorName.body,
       postDBWithCreatorName.likes,
       postDBWithCreatorName.dislikes,
-      postDBWithCreatorName.comment,
+      postDBWithCreatorName.comments,
       postDBWithCreatorName.created_at,
       postDBWithCreatorName.updated_at,
       postDBWithCreatorName.creator_id,
@@ -203,7 +203,7 @@ export class PostBusiness {
 
     const likeDislikeDB: LikeDislikeDB = {
       user_id: payload.id,
-      posts_id: postId,
+      post_id: postId,
       like: likeSQlite,
     };
 

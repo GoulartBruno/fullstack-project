@@ -4,20 +4,12 @@ export interface PostDB {
   body: string;
   likes: number;
   dislikes: number;
-  comment: number;
   created_at: string;
   updated_at: string;
+  comments: number;
 }
 
-export interface PostDBWithCreatorName {
-  id: string;
-  creator_id: string;
-  body: string;
-  likes: number;
-  dislikes: number;
-  comment: number;
-  created_at: string;
-  updated_at: string;
+export interface PostDBWithCreatorName extends PostDB {
   creator_name: string;
 }
 
@@ -26,7 +18,7 @@ export interface PostModel {
   body: string;
   likes: number;
   dislikes: number;
-  comment: number;
+  comments: number;
   createdAt: string;
   updatedAt: string;
   creator: {
@@ -37,7 +29,7 @@ export interface PostModel {
 
 export interface LikeDislikeDB {
   user_id: string;
-  posts_id: string;
+  post_id: string;
   like: number;
 }
 
@@ -52,7 +44,7 @@ export class Post {
     private body: string,
     private likes: number,
     private dislikes: number,
-    private comment: number,
+    private comments: number,
     private createdAt: string,
     private updatedAt: string,
     private creatorId: string,
@@ -65,6 +57,19 @@ export class Post {
 
   public setId(value: string): void {
     this.id = value;
+  }
+  public getComment(): number {
+    return this.comments;
+  }
+
+  public setComments(value: number) {
+    this.comments = value;
+  }
+  public addComment(): void {
+    this.comments++;
+  }
+  public removeComment(): void {
+    this.comments--;
   }
 
   public getBody(): string {
@@ -134,16 +139,7 @@ export class Post {
   public getCreatorName(): string {
     return this.creatorName;
   }
-  public getComment(): number {
-    return this.comment;
-  }
 
-  public setComments(value: number) {
-    this.comment = value;
-  }
-  public addComment(): void {
-    this.comment++;
-  }
   public setCreatorName(value: string): void {
     this.creatorName = value;
   }
@@ -155,8 +151,8 @@ export class Post {
       body: this.body,
       likes: this.likes,
       dislikes: this.dislikes,
-      comment: this.comment,
       created_at: this.createdAt,
+      comments: this.comments,
       updated_at: this.updatedAt,
     };
   }
@@ -167,7 +163,7 @@ export class Post {
       body: this.body,
       likes: this.likes,
       dislikes: this.dislikes,
-      comment: this.comment,
+      comments: this.comments,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
       creator: {
