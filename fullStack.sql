@@ -87,8 +87,8 @@ VALUES
  DROP TABLE likes_dislikes;
  DROP TABLE posts;
  DROP TABLE users;
- DROP TABLE comments;
- DROP TABLE likes_dislikes_comment;
+ DROP TABLE comments_posts;
+ DROP TABLE likes_dislikes_posts;
  DROP TABLE comments_posts;
 
 SELECT * FROM posts;
