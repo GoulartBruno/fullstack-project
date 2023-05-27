@@ -8,7 +8,7 @@ import { UnauthorizedError } from "../../../src/errors/UnauthorizedError";
 import { ForbiddenError } from "../../../src/errors/ForbiddenError";
 import { NotFoundError } from "../../../src/errors/NotFoundError";
 
-import { DeleteCommentByIdSchema } from "../../../src/dtos/Comment/deleteCommentById.dto";
+import { DeleteCommentByIdSchema } from "../../../src/dtos/comment/deleteCommentById.dto";
 
 describe("Testando deleteCommentById", () => {
   const commentBusiness = new CommentBusiness(
