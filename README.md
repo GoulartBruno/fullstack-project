@@ -19,6 +19,8 @@ O Labook é uma rede social com o objetivo de promover a conexão e interação 
 
 [Link Demonstração](https://documenter.getpostman.com/view/25826658/2s93mASest)
 
+[Link Front-End](https://projeto-labeddit-frontend-ten.vercel.app/)
+
 ## Estruturação do banco de dados
 
 ![projeto-labook](./assets/diagrama.jpg)
