@@ -21,7 +21,7 @@ O Labook é uma rede social com o objetivo de promover a conexão e interação 
 
 ## Estruturação do banco de dados
 
-![projeto-labook](./assets/diagram.png)
+![projeto-labook](./assets/diagrama.jpg)
 
 ## Requisitos:
 
