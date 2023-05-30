@@ -6,7 +6,7 @@ import { ZodError } from "zod";
 import { UnauthorizedError } from "../../../src/errors/UnauthorizedError";
 import { CommentDatabaseMock } from "../../mocks/CommentDatabaseMock";
 import { NotFoundError } from "../../../src/errors/NotFoundError";
-import { EditCommentByIdSchema } from "../../../src/dtos/Comment/editComment.dto";
+import { EditCommentByIdSchema } from "../../../src/dtos/comment/editComment.dto";
 
 import { ForbiddenError } from "../../../src/errors/ForbiddenError";
 

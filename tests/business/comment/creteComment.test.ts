@@ -5,7 +5,7 @@ import { TokenManagerMock } from "../../mocks/TokenManagerMock";
 import { ZodError } from "zod";
 import { UnauthorizedError } from "../../../src/errors/UnauthorizedError";
 import { CommentDatabaseMock } from "../../mocks/CommentDatabaseMock";
-import { CreateCommentSchema } from "../../../src/dtos/Comment/createComment.dto";
+import { CreateCommentSchema } from "../../../src/dtos/comment/createComment.dto";
 import { NotFoundError } from "../../../src/errors/NotFoundError";
 
 describe("Testando createComment", () => {

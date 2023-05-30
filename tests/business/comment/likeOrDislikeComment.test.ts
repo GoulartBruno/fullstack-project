@@ -7,7 +7,7 @@ import { ZodError } from "zod";
 import { UnauthorizedError } from "../../../src/errors/UnauthorizedError";
 import { ForbiddenError } from "../../../src/errors/ForbiddenError";
 import { NotFoundError } from "../../../src/errors/NotFoundError";
-import { LikeOrDislikeCommentSchema } from "../../../src/dtos/Comment/likeOrDislikeComment.dto";
+import { LikeOrDislikeCommentSchema } from "../../../src/dtos/comment/likeOrDislikeComment.dto";
 
 describe("Testando likeOrDislikeComment", () => {
   const commentBusiness = new CommentBusiness(
