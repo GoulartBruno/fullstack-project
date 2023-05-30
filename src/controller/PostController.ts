@@ -135,7 +135,7 @@ export class PostController {
     }
   };
 
-  public getPostWithCommentsById = async (
+  public findPostWithCommentsById = async (
     req: Request,
     res: Response
   ): Promise<void> => {
